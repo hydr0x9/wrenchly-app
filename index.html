@@ -1,0 +1,109 @@
+<CodeBlock language="html" editable>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111827">
+<title>Wrenchly – Your Car Companion</title>
+<style>
+:root{--bg:#0b1120;--panel:#151f30;--panel2:#1c293c;--text:#f2f5fa;--muted:#a5b2c5;--blue:#55a6ff;--green:#42d39a;--orange:#ffb454;--red:#ff7070}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px system-ui,-apple-system,sans-serif}
+header{padding:22px 18px 14px;background:#111b2b;position:sticky;top:0;z-index:3;border-bottom:1px solid #26354b}
+.brand{font-size:25px;font-weight:850;letter-spacing:-1px}
+.brand span{color:var(--blue)}
+header p{margin:3px 0;color:var(--muted);font-size:12px}
+main{max-width:720px;margin:auto;padding:17px 15px 100px}
+.hero{background:linear-gradient(135deg,#1b3859,#142235);padding:22px;border-radius:18px;margin-bottom:18px}
+.eyebrow{color:#a9d5ff;font-size:11px;font-weight:800;letter-spacing:1px}
+h1{font-size:28px;margin:8px 0 4px}
+h2{font-size:21px;margin:22px 0 12px}
+h3{font-size:16px;margin:0 0 7px}
+p{line-height:1.55}
+.muted{color:var(--muted);font-size:13px}
+.badge{display:inline-block;background:#173c36;color:#8df0c4;padding:5px 9px;border-radius:30px;font-size:11px;font-weight:700}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card{background:var(--panel);border:1px solid #26354b;border-radius:14px;padding:15px;margin-bottom:10px}
+.tile{min-height:112px;text-align:left;color:var(--text);cursor:pointer}
+.tile .ico{font-size:25px;display:block;margin-bottom:10px}
+button{font:inherit}
+button.primary,.tile,.action{border:0;border-radius:12px}
+button.primary{background:var(--blue);color:#071525;font-weight:800;padding:12px 16px;cursor:pointer}
+button.secondary{background:var(--panel2);color:var(--text);border:1px solid #33435a;border-radius:10px;padding:10px;cursor:pointer}
+nav{position:fixed;bottom:0;left:0;right:0;background:#111b2b;border-top:1px solid #26354b;display:flex;justify-content:space-around;padding:9px 3px calc(9px + env(safe-area-inset-bottom));z-index:5}
+nav button{background:none;border:0;color:var(--muted);font-size:11px;padding:6px 4px;cursor:pointer}
+nav button.active{color:var(--blue);font-weight:800}
+nav span{display:block;font-size:20px;margin-bottom:2px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+input,textarea,select{width:100%;background:#0e1828;color:var(--text);border:1px solid #35465e;border-radius:10px;padding:12px;font:inherit;margin:6px 0 12px}
+label{display:block;color:var(--muted);font-size:13px;margin-top:10px}
+.item{padding:13px 0;border-bottom:1px solid #2a394d}
+.item:last-child{border:0}
+.check{display:flex;gap:10px;align-items:flex-start;line-height:1.4;padding:10px 0}
+.check input{width:19px;height:19px;margin:2px 0;accent-color:var(--green)}
+.notice{background:#34291b;border:1px solid #73532c;padding:13px;border-radius:12px;color:#ffdaa4;font-size:13px;line-height:1.5}
+.danger{background:#391f28;border:1px solid #783c4a;padding:13px;border-radius:12px;color:#ffc0c0;font-size:13px}
+.hidden{display:none!important}
+ul{padding-left:20px;line-height:1.7}
+footer{text-align:center;color:var(--muted);font-size:11px;padding:25px}
+</style>
+</head>
+<body>
+<header>
+ <div class="brand">WRENCH<span>LY</span> 🔧</div>
+ <p>Understand your car. Find the fault. Fix it with confidence.</p>
+</header>
+<main id="app"></main>
+<nav>
+ <button data-tab="home" class="active"><span>🏠</span>Garage</button>
+ <button data-tab="learn"><span>📘</span>Learn</button>
+ <button data-tab="maintain"><span>🛠️</span>Maintain</button>
+ <button data-tab="fault"><span>🔎</span>Fault finder</button>
+ <button data-tab="records"><span>📋</span>Records</button>
+</nav>
+<script>
+const KEY="wrenchly_v2";
+const defaults={
+ vehicle:"2017 BMW 120d",
+ details:"3-door · Manual · Diesel · UK",
+ condition:"No known current faults",
+ engine:"Exact engine code to be verified",
+ checks:{},notes:"",records:[],lesson:""
+};
+let data;
+try{data={...defaults,...JSON.parse(localStorage.getItem(KEY)||"{}")}}catch(e){data={...defaults}}
+function save(){localStorage.setItem(KEY,JSON.stringify(data))}
+const lessons=[
+["Engine bay basics","Learn the main systems","The engine converts fuel energy into mechanical power. It relies on lubrication, cooling, air intake, fuel delivery and exhaust systems working together.",["Oil lubricates moving parts.","Coolant carries heat away.","The air filter helps keep dirt out of the engine.","The exhaust system treats emissions."]],
+["Turbocharger","How boost works","A turbocharger uses exhaust energy to drive a compressor, which increases the amount of air entering the engine.",["A boost leak can reduce performance.","A control fault can affect boost.","A turbo fault should be diagnosed, not guessed.","Never touch hot turbo or exhaust parts."]],
+["Diesel particulate filter","Understanding the DPF","The DPF captures soot from diesel exhaust. Regeneration raises exhaust temperature to oxidise accumulated soot.",["Repeated short journeys can make regeneration harder.","Pressure and temperature sensors are important.","Other engine faults can prevent regeneration.","A warning needs diagnosis before action."]],
+["EGR system","Exhaust gas recirculation","The EGR system returns a controlled amount of exhaust gas to the intake under certain operating conditions.",["EGR faults can be electrical or mechanical.","Airflow faults can have several causes.","Coolant loss needs prompt investigation.","Do not remove emissions equipment."]],
+["Clutch and gearbox","Manual transmission basics","The clutch connects and disconnects the engine from the gearbox so gears can be selected.",["Rising engine revs without matching acceleration can indicate clutch slip.","Changes in pedal feel may indicate a hydraulic issue.","Gear selection problems need investigation.","Clutch replacement is generally specialist work."]]
+];
+function shell(content){document.getElementById("app").innerHTML=content}
+function home(){shell(`
+ <section class="hero"><div class="eyebrow">YOUR GARAGE · VEHICLE 001</div>
+ <h1>BMW 120d</h1><p>${data.details}</p><span class="badge">● ${data.condition}</span>
+ </section>
+ <div class="card"><div class="row"><h3>Vehicle profile</h3><span>🚘</span></div>
+ <p class="muted">2017 BMW 1 Series · F21 3-door</p>
+ <p class="muted">${data.engine}</p></div>
+ <h2>What would you like to do?</h2>
+ <div class="grid">
+ <button class="card tile" onclick="go('learn')"><span class="ico">📘</span><b>Learn</b><p class="muted">Understand your BMW</p></button>
+ <button class="card tile" onclick="go('maintain')"><span class="ico">🛠️</span><b>Maintenance</b><p class="muted">Checks and upkeep</p></button>
+ <button class="card tile" onclick="go('fault')"><span class="ico">🔎</span><b>Fault finder</b><p class="muted">Guided diagnosis</p></button>
+ <button class="card tile" onclick="go('records')"><span class="ico">📋</span><b>My records</b><p class="muted">Your saved notes</p></button>
+ </div>
+ <div class="notice">Wrenchly is an educational guide. Always verify technical specifications against your exact vehicle.</div>
+ `)}
+function learn(){shell(`<h2>BMW learning centre</h2><p class="muted">Choose a lesson to explore.</p>
+ ${lessons.map((l,i)=>`<button class="card tile" style="width:100%;min-height:0" onclick="lesson(${i})"><b>${l[0]}</b><p class="muted">${l[1]}</p></button>`).join("")}`)}
+function lesson(i){const l=lessons[i];data.lesson=l[0];save();shell(`<button class="secondary" onclick="go('learn')">← All lessons</button><h2>${l[0]}</h2><p>${l[2]}</p><div class="card"><h3>Key points</h3><ul>${l[3].map(x=>`<li>${x}</li>`).join("")}</ul></div><button class="primary" onclick="go('learn')">Back to lessons</button>`)}
+const checks=[
+"Check engine oil level using the handbook's method",
+"Check coolant level when the engine is completely cold",
+"Check tyre condition and pressures against the vehicle label",
+"Check exterior lights and indicators",
+"Check wind
