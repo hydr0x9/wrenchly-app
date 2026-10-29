@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101820">
+  <meta name="description" content="Wrenchly: learn automotive systems, practise diagnostics, and track your mechanic skills.">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+  <title>Wrenchly — Learn. Diagnose. Repair.</title>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-mark" aria-hidden="true">W</div>
+    <div class="brand-copy"><strong>Wrenchly</strong><span>Learn. Diagnose. Repair.</span></div>
+    <button id="installBtn" class="icon-btn hidden" aria-label="Install Wrenchly">↓</button>
+  </header>
+
+  <main id="app">
+    <section class="hero">
+      <div class="eyebrow">YOUR MECHANIC JOURNEY</div>
+      <h1>Build real-world<br><em>mechanic skills.</em></h1>
+      <p>Learn how cars work, practise fault-finding, and build confidence one lesson at a time.</p>
+      <div class="hero-row"><div><b id="heroProgress">0%</b><span>course progress</span></div><div class="progress-track"><i id="heroBar"></i></div></div>
+    </section>
+
+    <nav class="tabs" aria-label="Main navigation">
+      <button class="tab active" data-view="home">Home</button>
+      <button class="tab" data-view="learn">Learn</button>
+      <button class="tab" data-view="quiz">Quiz</button>
+      <button class="tab" data-view="garage">Garage</button>
+      <button class="tab" data-view="progress">Progress</button>
+    </nav>
+
+    <section id="view-home" class="view active">
+      <div class="section-head"><div><div class="eyebrow">PICK UP WHERE YOU LEFT OFF</div><h2>Your learning path</h2></div><span class="pill">Beginner → Pro</span></div>
+      <article class="continue-card">
+        <div class="round-icon">⚙</div><div class="grow"><span class="muted">START HERE</span><h3>Mechanic fundamentals</h3><p>Tools, workshop safety and how cars fit together.</p></div><button class="arrow-btn" data-go="learn" aria-label="Open lessons">›</button>
+      </article>
+      <div class="section-head"><h2>Explore systems</h2><span class="muted small">8 learning tracks</span></div>
+      <div id="homeTracks" class="track-grid"></div>
+      <div class="safety-note"><span>ⓘ</span><p><b>Safety first.</b> Training content is educational. Use the correct service manual and qualified supervision for safety-critical work. Never work under a vehicle supported only by a jack.</p></div>
+    </section>
+
+    <section id="view-learn" class="view">
+      <div class="section-head"><div><div class="eyebrow">LEARN BY SYSTEM</div><h2>Lessons</h2></div></div>
+      <p class="muted intro">Short, structured lessons. Mark a lesson complete to grow your progress.</p>
+      <div id="lessonList" class="lesson-list"></div>
+    </section>
+
+    <section id="view-quiz" class="view">
+      <div class="eyebrow">CHECK YOUR KNOWLEDGE</div><h2>Quick quiz</h2>
+      <p class="muted intro">Answer a few questions, get feedback, and try again to improve your score.</p>
+      <div class="quiz-card" id="quizCard"></div>
+    </section>
+
+    <section id="view-garage" class="view">
+      <div class="eyebrow">PRACTISE FAULT-FINDING</div><h2>Diagnostic garage</h2>
+      <p class="muted intro">Work through a simulated customer complaint. Choose the best next test before replacing parts.</p>
+      <div id="caseList" class="case-list"></div>
+      <div id="caseDetail"></div>
+    </section>
+
+    <section id="view-progress" class="view">
+      <div class="eyebrow">YOUR SKILLS, AT A GLANCE</div><h2>My progress</h2>
+      <div class="stats-grid"><div class="stat-card"><strong id="statLessons">0</strong><span>Lessons complete</span></div><div class="stat-card"><strong id="statQuizzes">0</strong><span>Quiz answers</span></div><div class="stat-card"><strong id="statStreak">0</strong><span>Skills practised</span></div></div>
+      <div class="panel"><div class="section-head"><h3>Course completion</h3><b id="progressLabel">0%</b></div><div class="progress-track wide"><i id="progressBar"></i></div><p class="muted small" id="progressText">Your completed lessons will appear here.</p></div>
+      <div class="panel"><h3>Next steps</h3><ul class="next-steps"><li>Complete the fundamentals lessons.</li><li>Try the diagnostic cases before guessing at parts.</li><li>Use model-specific service information for real repairs.</li></ul></div>
+      <button id="resetProgress" class="text-button">Reset learning progress</button>
+    </section>
+  </main>
+
+  <div id="lessonModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-sheet"><button id="closeModal" class="close-btn" aria-label="Close lesson">×</button><div class="eyebrow" id="modalCategory">LESSON</div><h2 id="modalTitle"></h2><div id="modalBody" class="lesson-body"></div><div class="modal-footer"><button id="completeLesson" class="primary-btn">Mark lesson complete</button></div></div>
+  </div>
+  <footer>Wrenchly <span>•</span> Built for curious minds and future mechanics</footer>
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+    }
+  </script>
+</body>
+</html>
