@@ -1,51 +1,49 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#111827">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101827">
 <title>Wrenchly – Your Car Companion</title>
 <style>
-:root{--bg:#0b1120;--panel:#151f30;--panel2:#1c293c;--text:#f2f5fa;--muted:#a5b2c5;--blue:#55a6ff;--green:#42d39a;--orange:#ffb454;--red:#ff7070}
+:root{--bg:#0b1220;--panel:#172337;--panel2:#203149;--text:#f5f7fb;--muted:#aab8ca;--blue:#58adff;--green:#50d6a0;--red:#ff7777;--amber:#ffc16b}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font:16px system-ui,-apple-system,sans-serif}
-header{padding:22px 18px 14px;background:#111b2b;position:sticky;top:0;z-index:3;border-bottom:1px solid #26354b}
-.brand{font-size:25px;font-weight:850;letter-spacing:-1px}
+body{margin:0;background:var(--bg);color:var(--text);font:16px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{padding:20px;background:#111d30;border-bottom:1px solid #293951;position:sticky;top:0;z-index:5}
+.brand{font-size:25px;font-weight:900;letter-spacing:-1px}
 .brand span{color:var(--blue)}
-header p{margin:3px 0;color:var(--muted);font-size:12px}
-main{max-width:720px;margin:auto;padding:17px 15px 100px}
-.hero{background:linear-gradient(135deg,#1b3859,#142235);padding:22px;border-radius:18px;margin-bottom:18px}
-.eyebrow{color:#a9d5ff;font-size:11px;font-weight:800;letter-spacing:1px}
-h1{font-size:28px;margin:8px 0 4px}
+header p{font-size:12px;color:var(--muted);margin:4px 0 0}
+main{max-width:700px;margin:auto;padding:18px 15px 110px;min-height:75vh}
+.hero{background:linear-gradient(135deg,#1b4269,#17263d);padding:23px;border-radius:18px;margin-bottom:17px}
+.eyebrow{font-size:11px;letter-spacing:1px;color:#b4dcff;font-weight:800}
+h1{font-size:29px;margin:10px 0 4px}
 h2{font-size:21px;margin:22px 0 12px}
-h3{font-size:16px;margin:0 0 7px}
-p{line-height:1.55}
+h3{font-size:16px;margin:0 0 8px}
+p{line-height:1.5}
 .muted{color:var(--muted);font-size:13px}
-.badge{display:inline-block;background:#173c36;color:#8df0c4;padding:5px 9px;border-radius:30px;font-size:11px;font-weight:700}
+.card{background:var(--panel);border:1px solid #2b3d55;border-radius:15px;padding:16px;margin-bottom:11px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.card{background:var(--panel);border:1px solid #26354b;border-radius:14px;padding:15px;margin-bottom:10px}
-.tile{min-height:112px;text-align:left;color:var(--text);cursor:pointer}
-.tile .ico{font-size:25px;display:block;margin-bottom:10px}
+.tile{text-align:left;color:var(--text);cursor:pointer;min-height:110px}
+.tile b{font-size:15px}
+.tile .ico{font-size:26px;display:block;margin-bottom:9px}
 button{font:inherit}
-button.primary,.tile,.action{border:0;border-radius:12px}
-button.primary{background:var(--blue);color:#071525;font-weight:800;padding:12px 16px;cursor:pointer}
-button.secondary{background:var(--panel2);color:var(--text);border:1px solid #33435a;border-radius:10px;padding:10px;cursor:pointer}
-nav{position:fixed;bottom:0;left:0;right:0;background:#111b2b;border-top:1px solid #26354b;display:flex;justify-content:space-around;padding:9px 3px calc(9px + env(safe-area-inset-bottom));z-index:5}
-nav button{background:none;border:0;color:var(--muted);font-size:11px;padding:6px 4px;cursor:pointer}
+button.primary{background:var(--blue);color:#071525;border:0;border-radius:11px;padding:12px 17px;font-weight:800;cursor:pointer}
+button.secondary{background:var(--panel2);color:var(--text);border:1px solid #40536e;border-radius:10px;padding:10px 13px;cursor:pointer}
+nav{position:fixed;bottom:0;left:0;right:0;background:#111d30;border-top:1px solid #293951;display:flex;justify-content:space-around;padding:8px 2px calc(8px + env(safe-area-inset-bottom));z-index:10}
+nav button{background:none;border:0;color:var(--muted);font-size:10px;padding:5px 2px;cursor:pointer}
 nav button.active{color:var(--blue);font-weight:800}
-nav span{display:block;font-size:20px;margin-bottom:2px}
+nav span{display:block;font-size:20px;margin-bottom:3px}
+.badge{display:inline-block;padding:6px 10px;background:#173c35;color:#8df0c2;border-radius:20px;font-size:11px}
+.notice{padding:13px;background:#352b1e;border:1px solid #72552e;border-radius:12px;color:#ffdda6;font-size:13px;line-height:1.5;margin:12px 0}
+.danger{padding:14px;background:#3b2028;border:1px solid #81404d;border-radius:12px;color:#ffc1c1;margin:12px 0;font-size:13px}
+label{display:block;color:var(--muted);font-size:13px;margin:12px 0 5px}
+input,textarea,select{width:100%;padding:12px;border-radius:10px;background:#0d1828;border:1px solid #3a4c64;color:white;font:inherit;margin:5px 0 12px}
+.check{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #2a3a50;line-height:1.4}
+.check input{width:19px;margin:2px 0;accent-color:var(--green)}
 .row{display:flex;justify-content:space-between;align-items:center;gap:10px}
-input,textarea,select{width:100%;background:#0e1828;color:var(--text);border:1px solid #35465e;border-radius:10px;padding:12px;font:inherit;margin:6px 0 12px}
-label{display:block;color:var(--muted);font-size:13px;margin-top:10px}
-.item{padding:13px 0;border-bottom:1px solid #2a394d}
-.item:last-child{border:0}
-.check{display:flex;gap:10px;align-items:flex-start;line-height:1.4;padding:10px 0}
-.check input{width:19px;height:19px;margin:2px 0;accent-color:var(--green)}
-.notice{background:#34291b;border:1px solid #73532c;padding:13px;border-radius:12px;color:#ffdaa4;font-size:13px;line-height:1.5}
-.danger{background:#391f28;border:1px solid #783c4a;padding:13px;border-radius:12px;color:#ffc0c0;font-size:13px}
-.hidden{display:none!important}
-ul{padding-left:20px;line-height:1.7}
-footer{text-align:center;color:var(--muted);font-size:11px;padding:25px}
+.item{padding:12px 0;border-bottom:1px solid #2b3b50}
+.small{font-size:12px;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -55,7 +53,7 @@ footer{text-align:center;color:var(--muted);font-size:11px;padding:25px}
 </header>
 <main id="app"></main>
 <nav>
- <button data-tab="home" class="active"><span>🏠</span>Garage</button>
+ <button class="active" data-tab="home"><span>🏠</span>Garage</button>
  <button data-tab="learn"><span>📘</span>Learn</button>
  <button data-tab="maintain"><span>🛠️</span>Maintain</button>
  <button data-tab="fault"><span>🔎</span>Fault finder</button>
@@ -65,44 +63,145 @@ footer{text-align:center;color:var(--muted);font-size:11px;padding:25px}
 const KEY="wrenchly_v2";
 const defaults={
  vehicle:"2017 BMW 120d",
- details:"3-door · Manual · Diesel · UK",
+ details:"3-door · Manual · Diesel",
+ engine:"Exact engine code to be confirmed",
  condition:"No known current faults",
- engine:"Exact engine code to be verified",
- checks:{},notes:"",records:[],lesson:""
+ checks:{},notes:"",records:[]
 };
 let data;
-try{data={...defaults,...JSON.parse(localStorage.getItem(KEY)||"{}")}}catch(e){data={...defaults}}
-function save(){localStorage.setItem(KEY,JSON.stringify(data))}
+try{
+ data={...defaults,...JSON.parse(localStorage.getItem(KEY)||"{}")};
+}catch(e){data={...defaults};}
+function save(){
+ try{localStorage.setItem(KEY,JSON.stringify(data));}
+ catch(e){alert("Unable to save on this device.");}
+}
 const lessons=[
-["Engine bay basics","Learn the main systems","The engine converts fuel energy into mechanical power. It relies on lubrication, cooling, air intake, fuel delivery and exhaust systems working together.",["Oil lubricates moving parts.","Coolant carries heat away.","The air filter helps keep dirt out of the engine.","The exhaust system treats emissions."]],
-["Turbocharger","How boost works","A turbocharger uses exhaust energy to drive a compressor, which increases the amount of air entering the engine.",["A boost leak can reduce performance.","A control fault can affect boost.","A turbo fault should be diagnosed, not guessed.","Never touch hot turbo or exhaust parts."]],
-["Diesel particulate filter","Understanding the DPF","The DPF captures soot from diesel exhaust. Regeneration raises exhaust temperature to oxidise accumulated soot.",["Repeated short journeys can make regeneration harder.","Pressure and temperature sensors are important.","Other engine faults can prevent regeneration.","A warning needs diagnosis before action."]],
-["EGR system","Exhaust gas recirculation","The EGR system returns a controlled amount of exhaust gas to the intake under certain operating conditions.",["EGR faults can be electrical or mechanical.","Airflow faults can have several causes.","Coolant loss needs prompt investigation.","Do not remove emissions equipment."]],
-["Clutch and gearbox","Manual transmission basics","The clutch connects and disconnects the engine from the gearbox so gears can be selected.",["Rising engine revs without matching acceleration can indicate clutch slip.","Changes in pedal feel may indicate a hydraulic issue.","Gear selection problems need investigation.","Clutch replacement is generally specialist work."]]
+{title:"Engine bay basics",intro:"Understand the main systems that keep your engine running.",body:"Your engine depends on several systems working together. Lubrication reduces friction, cooling controls temperature, air intake supplies clean air and the fuel system delivers fuel.",points:["Engine oil lubricates moving parts.","Coolant carries heat away from the engine.","The air filter helps prevent dirt entering the engine.","The exhaust system carries and treats exhaust gases."]},
+{title:"Turbocharger",intro:"How your diesel engine produces boost.",body:"A turbocharger uses energy from exhaust gases to drive a compressor. The compressor increases the amount of air entering the engine.",points:["A boost leak can reduce engine performance.","Turbo control faults can affect boost pressure.","A fault code does not automatically mean the turbo is faulty.","Turbochargers and exhaust components become extremely hot."]},
+{title:"Diesel particulate filter",intro:"Understand your DPF warning.",body:"A diesel particulate filter captures soot from the exhaust. Regeneration raises exhaust temperature to burn off accumulated soot.",points:["Repeated short journeys can make regeneration difficult.","Pressure and temperature sensors help monitor the system.","Other engine faults can prevent regeneration.","Do not ignore a DPF warning or repeatedly force regeneration."]},
+{title:"EGR system",intro:"Learn about exhaust gas recirculation.",body:"The EGR system returns a controlled amount of exhaust gas to the intake under certain operating conditions. This helps reduce nitrogen oxide emissions.",points:["EGR faults can be electrical or mechanical.","Airflow faults can have several possible causes.","Coolant loss needs prompt investigation.","Do not remove or disable emissions equipment."]},
+{title:"Clutch and manual gearbox",intro:"Understand the manual transmission.",body:"The clutch connects and disconnects the engine from the gearbox so the driver can select gears.",points:["Engine revs rising without matching acceleration may indicate clutch slip.","Changes in pedal feel may indicate a hydraulic problem.","Difficulty selecting gears can have several causes.","Clutch replacement is generally specialist work."]}
 ];
-function shell(content){document.getElementById("app").innerHTML=content}
-function home(){shell(`
- <section class="hero"><div class="eyebrow">YOUR GARAGE · VEHICLE 001</div>
- <h1>BMW 120d</h1><p>${data.details}</p><span class="badge">● ${data.condition}</span>
+const tasks=[
+"Check engine oil level using the handbook procedure",
+"Check coolant level when the engine is completely cold",
+"Check tyre pressures against the vehicle label",
+"Inspect tyres for damage and unusual wear",
+"Check exterior lights and indicators",
+"Check windscreen wipers and screenwash",
+"Look for visible fluid leaks beneath the vehicle"
+];
+const symptoms=[
+{title:"Loss of power",desc:"Reduced acceleration, hesitation or limp mode.",questions:["Is an engine warning light showing?","Did the problem begin suddenly?","Does the engine rev normally?"]},
+{title:"Engine won't start",desc:"Engine does not start or struggles to start.",questions:["Do the dashboard lights come on?","Does the starter motor turn the engine?","Is there a warning message?"]},
+{title:"DPF warning",desc:"A diesel particulate filter warning is displayed.",questions:["Is the DPF warning amber or red?","Is there also an engine warning light?","Has the vehicle mainly done short journeys?"]},
+{title:"Coolant loss or overheating",desc:"Temperature rising or coolant level dropping.",questions:["Is the temperature gauge unusually high?","Can you see steam or a leak?","Is there a coolant warning?"]},
+{title:"Clutch or gear problem",desc:"Difficulty selecting gears or clutch slipping.",questions:["Does the clutch pedal feel different?","Do engine revs rise without matching acceleration?","Is selecting first or reverse difficult?"]}
+];
+const app=document.getElementById("app");
+function show(html){app.innerHTML=html;}
+function go(tab){
+ document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));
+ if(tab==="home")home();
+ if(tab==="learn")learn();
+ if(tab==="maintain")maintain();
+ if(tab==="fault")fault();
+ if(tab==="records")records();
+}
+function home(){
+ show(`
+ <section class="hero">
+ <div class="eyebrow">YOUR GARAGE · VEHICLE 001</div>
+ <h1>BMW 120d</h1>
+ <p>2017 BMW 1 Series · F21 · 3-door</p>
+ <span class="badge">● ${data.condition}</span>
  </section>
- <div class="card"><div class="row"><h3>Vehicle profile</h3><span>🚘</span></div>
- <p class="muted">2017 BMW 1 Series · F21 3-door</p>
- <p class="muted">${data.engine}</p></div>
+ <div class="card">
+ <div class="row"><h3>Your vehicle</h3><span>🚘</span></div>
+ <p class="muted">${data.details}</p>
+ <p class="muted">${data.engine}</p>
+ <p class="small">Vehicle specifications should be checked against the exact vehicle and production date.</p>
+ </div>
  <h2>What would you like to do?</h2>
  <div class="grid">
  <button class="card tile" onclick="go('learn')"><span class="ico">📘</span><b>Learn</b><p class="muted">Understand your BMW</p></button>
- <button class="card tile" onclick="go('maintain')"><span class="ico">🛠️</span><b>Maintenance</b><p class="muted">Checks and upkeep</p></button>
- <button class="card tile" onclick="go('fault')"><span class="ico">🔎</span><b>Fault finder</b><p class="muted">Guided diagnosis</p></button>
- <button class="card tile" onclick="go('records')"><span class="ico">📋</span><b>My records</b><p class="muted">Your saved notes</p></button>
+ <button class="card tile" onclick="go('maintain')"><span class="ico">🛠️</span><b>Maintenance</b><p class="muted">Everyday checks</p></button>
+ <button class="card tile" onclick="go('fault')"><span class="ico">🔎</span><b>Fault finder</b><p class="muted">Guided troubleshooting</p></button>
+ <button class="card tile" onclick="go('records')"><span class="ico">📋</span><b>My records</b><p class="muted">Saved notes and sessions</p></button>
  </div>
- <div class="notice">Wrenchly is an educational guide. Always verify technical specifications against your exact vehicle.</div>
- `)}
-function learn(){shell(`<h2>BMW learning centre</h2><p class="muted">Choose a lesson to explore.</p>
- ${lessons.map((l,i)=>`<button class="card tile" style="width:100%;min-height:0" onclick="lesson(${i})"><b>${l[0]}</b><p class="muted">${l[1]}</p></button>`).join("")}`)}
-function lesson(i){const l=lessons[i];data.lesson=l[0];save();shell(`<button class="secondary" onclick="go('learn')">← All lessons</button><h2>${l[0]}</h2><p>${l[2]}</p><div class="card"><h3>Key points</h3><ul>${l[3].map(x=>`<li>${x}</li>`).join("")}</ul></div><button class="primary" onclick="go('learn')">Back to lessons</button>`)}
-const checks=[
-"Check engine oil level using the handbook's method",
-"Check coolant level when the engine is completely cold",
-"Check tyre condition and pressures against the vehicle label",
-"Check exterior lights and indicators",
-"Check wind
+ <div class="notice">Wrenchly is an educational guide, not a substitute for professional diagnosis or BMW workshop information.</div>
+ `);
+}
+function learn(){
+ show(`<h2>BMW learning centre</h2><p class="muted">Choose a subject to learn about.</p>
+ ${lessons.map((l,i)=>`<button class="card tile" style="width:100%;min-height:0" onclick="lesson(${i})"><b>${l.title}</b><p class="muted">${l.intro}</p></button>`).join("")}`);
+}
+function lesson(i){
+ const l=lessons[i];
+ show(`<button class="secondary" onclick="go('learn')">← All lessons</button>
+ <h2>${l.title}</h2><p>${l.body}</p>
+ <div class="card"><h3>Key things to know</h3><ul>${l.points.map(p=>`<li>${p}</li>`).join("")}</ul></div>
+ <button class="primary" onclick="go('learn')">Complete lesson ✓</button>`);
+}
+function maintain(){
+ show(`<h2>Maintenance checklist</h2>
+ <p class="muted">Tick off checks as you complete them. Progress is saved on this device.</p>
+ <div class="card">${tasks.map((t,i)=>`<label class="check"><input type="checkbox" ${data.checks[i]?"checked":""} onchange="toggleCheck(${i},this.checked)"><span>${t}</span></label>`).join("")}</div>
+ <p class="muted">${tasks.filter((t,i)=>data.checks[i]).length} of ${tasks.length} checks completed</p>
+ <div class="notice">Never open the coolant system when hot. If the engine overheats, stop safely and switch off the engine.</div>`);
+}
+function toggleCheck(i,v){data.checks[i]=v;save();}
+function fault(){
+ show(`<h2>Guided fault finder</h2>
+ <p class="muted">Choose the symptom closest to what you are experiencing.</p>
+ ${symptoms.map((s,i)=>`<button class="card tile" style="width:100%;min-height:0" onclick="diagnose(${i})"><b>${s.title}</b><p class="muted">${s.desc}</p></button>`).join("")}
+ <div class="notice">This tool helps organise observations. It cannot confirm a diagnosis or identify a failed part.</div>`);
+}
+function diagnose(i){
+ const s=symptoms[i];
+ show(`<button class="secondary" onclick="go('fault')">← Back</button>
+ <h2>${s.title}</h2><p>${s.desc}</p>
+ <div class="card"><h3>What are you experiencing?</h3>
+ ${s.questions.map((q,j)=>`<label>${j+1}. ${q}<select id="answer${j}"><option value="">Choose an answer</option><option>Yes</option><option>No</option><option>Not sure</option></select></label>`).join("")}
+ </div>
+ <div class="card"><h3>Recommended next steps</h3>
+ <p>Record warning messages and when the symptom occurs. If you have an OBD scanner, record the exact fault codes before clearing anything.</p>
+ <p class="muted">A fault code points towards a system or circuit. It does not automatically prove a particular component has failed.</p></div>
+ <button class="primary" onclick="saveDiagnosis(${i})">Save answers</button>`);
+}
+function saveDiagnosis(i){
+ const answers=[0,1,2].map(j=>document.getElementById("answer"+j).value||"Not answered");
+ data.records.unshift({date:new Date().toLocaleDateString("en-GB"),title:symptoms[i].title,answers});
+ save();
+ show(`<h2>Answers saved ✓</h2><p>Your diagnostic notes have been saved on this device.</p><button class="primary" onclick="go('records')">View my records</button>`);
+}
+function records(){
+ show(`<h2>My records</h2>
+ <div class="card"><h3>Vehicle notes</h3>
+ <textarea id="notes" rows="5" placeholder="Add service history, observations or vehicle notes...">${escapeText(data.notes)}</textarea>
+ <button class="primary" onclick="saveNotes()">Save notes</button></div>
+ <h3>Saved diagnostic sessions</h3>
+ ${data.records.length?data.records.map(r=>`<div class="card"><b>${escapeText(r.title)}</b><p class="muted">${escapeText(r.date)}</p><ul>${r.answers.map(a=>`<li>${escapeText(a)}</li>`).join("")}</ul></div>`).join(""):'<p class="muted">No saved diagnostic sessions yet.</p>'}
+ <button class="secondary" onclick="exportData()">Export my records</button>`);
+}
+function escapeText(s){
+ return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function saveNotes(){
+ data.notes=document.getElementById("notes").value;
+ save();alert("Your notes have been saved.");
+}
+function exportData(){
+ const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement("a");
+ a.href=url;a.download="wrenchly-records.json";a.click();
+ URL.revokeObjectURL(url);
+}
+document.querySelectorAll("nav button").forEach(b=>b.addEventListener("click",()=>go(b.dataset.tab)));
+home();
+</script>
+<footer style="text-align:center;color:#aab8ca;font-size:11px;padding:20px">Wrenchly · Learn. Maintain. Diagnose.</footer>
+</body>
+</html>
