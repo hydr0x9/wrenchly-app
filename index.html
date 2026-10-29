@@ -3,205 +3,333 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#101827">
-<title>Wrenchly – Your Car Companion</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#101820">
+<title>Wrenchly — Learn your car</title>
 <style>
-:root{--bg:#0b1220;--panel:#172337;--panel2:#203149;--text:#f5f7fb;--muted:#aab8ca;--blue:#58adff;--green:#50d6a0;--red:#ff7777;--amber:#ffc16b}
+:root {
+  --bg:#101820; --panel:#192630; --panel2:#22323d; --line:#30434e;
+  --text:#f4f7f8; --muted:#9aabb4; --green:#b9f36b; --green2:#8fce46;
+  --orange:#ffb66d; --red:#ff7777; --blue:#83c8f2;
+  --radius:19px;
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font:16px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-header{padding:20px;background:#111d30;border-bottom:1px solid #293951;position:sticky;top:0;z-index:5}
-.brand{font-size:25px;font-weight:900;letter-spacing:-1px}
-.brand span{color:var(--blue)}
-header p{font-size:12px;color:var(--muted);margin:4px 0 0}
-main{max-width:700px;margin:auto;padding:18px 15px 110px;min-height:75vh}
-.hero{background:linear-gradient(135deg,#1b4269,#17263d);padding:23px;border-radius:18px;margin-bottom:17px}
-.eyebrow{font-size:11px;letter-spacing:1px;color:#b4dcff;font-weight:800}
-h1{font-size:29px;margin:10px 0 4px}
-h2{font-size:21px;margin:22px 0 12px}
-h3{font-size:16px;margin:0 0 8px}
-p{line-height:1.5}
-.muted{color:var(--muted);font-size:13px}
-.card{background:var(--panel);border:1px solid #2b3d55;border-radius:15px;padding:16px;margin-bottom:11px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.tile{text-align:left;color:var(--text);cursor:pointer;min-height:110px}
-.tile b{font-size:15px}
-.tile .ico{font-size:26px;display:block;margin-bottom:9px}
-button{font:inherit}
-button.primary{background:var(--blue);color:#071525;border:0;border-radius:11px;padding:12px 17px;font-weight:800;cursor:pointer}
-button.secondary{background:var(--panel2);color:var(--text);border:1px solid #40536e;border-radius:10px;padding:10px 13px;cursor:pointer}
-nav{position:fixed;bottom:0;left:0;right:0;background:#111d30;border-top:1px solid #293951;display:flex;justify-content:space-around;padding:8px 2px calc(8px + env(safe-area-inset-bottom));z-index:10}
-nav button{background:none;border:0;color:var(--muted);font-size:10px;padding:5px 2px;cursor:pointer}
-nav button.active{color:var(--blue);font-weight:800}
-nav span{display:block;font-size:20px;margin-bottom:3px}
-.badge{display:inline-block;padding:6px 10px;background:#173c35;color:#8df0c2;border-radius:20px;font-size:11px}
-.notice{padding:13px;background:#352b1e;border:1px solid #72552e;border-radius:12px;color:#ffdda6;font-size:13px;line-height:1.5;margin:12px 0}
-.danger{padding:14px;background:#3b2028;border:1px solid #81404d;border-radius:12px;color:#ffc1c1;margin:12px 0;font-size:13px}
-label{display:block;color:var(--muted);font-size:13px;margin:12px 0 5px}
-input,textarea,select{width:100%;padding:12px;border-radius:10px;background:#0d1828;border:1px solid #3a4c64;color:white;font:inherit;margin:5px 0 12px}
-.check{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #2a3a50;line-height:1.4}
-.check input{width:19px;margin:2px 0;accent-color:var(--green)}
-.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.item{padding:12px 0;border-bottom:1px solid #2b3b50}
-.small{font-size:12px;color:var(--muted)}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button{font:inherit;cursor:pointer}
+.app{max-width:540px;margin:auto;min-height:100vh;padding-bottom:92px}
+header{padding:20px 20px 14px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-size:23px;font-weight:850;letter-spacing:-1px}
+.brand span{color:var(--green)}
+.header-right{display:flex;gap:9px;align-items:center}
+.pill{background:var(--panel);border:1px solid var(--line);border-radius:30px;padding:8px 11px;font-size:13px;font-weight:750}
+main{padding:4px 17px 24px}
+h1{font-size:29px;letter-spacing:-1.1px;margin:7px 0}
+h2{font-size:21px;letter-spacing:-.5px;margin:0 0 12px}
+h3{font-size:16px;margin:0 0 6px}
+p{color:var(--muted);line-height:1.5;margin:7px 0}
+.eyebrow{color:var(--green);font-size:11px;letter-spacing:1.5px;font-weight:850;text-transform:uppercase}
+.hero{background:linear-gradient(135deg,#263a43,#192630 65%);border:1px solid #3a505a;border-radius:25px;padding:20px;margin:8px 0 22px;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:#b9f36b0d;right:-55px;top:-60px}
+.hero p{max-width:290px}
+.hero-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px}
+.btn{border:0;border-radius:13px;padding:13px 17px;background:var(--green);color:#152019;font-weight:850}
+.btn:active{transform:scale(.98)}
+.btn.secondary{background:var(--panel2);color:var(--text);border:1px solid var(--line)}
+.btn.full{width:100%;margin-top:12px}
+.progress-track{height:8px;border-radius:10px;background:#344650;overflow:hidden;margin-top:9px}
+.progress-fill{height:100%;width:0;background:var(--green);border-radius:10px;transition:width .3s}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:17px 0 24px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:12px}
+.stat strong{font-size:20px;display:block}
+.stat span{font-size:11px;color:var(--muted)}
+.section-head{display:flex;justify-content:space-between;align-items:center;margin:22px 0 12px}
+.section-head small{color:var(--muted)}
+.path{position:relative;padding:4px 0 4px 17px}
+.path:before{content:"";position:absolute;left:34px;top:27px;bottom:30px;width:3px;background:#344650}
+.lesson{position:relative;display:flex;align-items:center;gap:13px;margin:12px 0;padding:13px;background:var(--panel);border:1px solid var(--line);border-radius:17px;cursor:pointer}
+.lesson.locked{opacity:.52}
+.lesson-icon{z-index:1;width:46px;height:46px;flex:none;border-radius:15px;background:var(--panel2);display:grid;place-items:center;font-size:22px;border:2px solid #425661}
+.lesson.done .lesson-icon{background:#293d2b;border-color:var(--green)}
+.lesson.current{border-color:var(--green);box-shadow:0 0 0 1px #b9f36b22}
+.lesson-info{flex:1;min-width:0}
+.lesson-info p{font-size:12px;margin:3px 0 0}
+.lesson-tag{font-size:10px;color:var(--green);font-weight:850;text-transform:uppercase;letter-spacing:.7px}
+.arrow{color:var(--muted);font-size:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin:11px 0}
+.car-visual{height:145px;border-radius:16px;background:linear-gradient(145deg,#263c46,#17242d);display:grid;place-items:center;margin:12px 0;font-size:65px}
+.car-title{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.tag{font-size:11px;border:1px solid var(--line);padding:6px 9px;border-radius:20px;color:var(--muted)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.feature{background:var(--panel);border:1px solid var(--line);padding:15px;border-radius:16px;cursor:pointer}
+.feature .emoji{font-size:24px;margin-bottom:9px}
+.feature p{font-size:12px}
+.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(540px,100%);padding:10px 9px calc(10px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(4,1fr);background:#111c24f5;border-top:1px solid var(--line);backdrop-filter:blur(15px);z-index:10}
+.nav-item{background:none;border:0;color:var(--muted);font-size:10px;font-weight:750;padding:6px 2px}
+.nav-item span{display:block;font-size:20px;margin-bottom:4px}
+.nav-item.active{color:var(--green)}
+.lesson-screen{padding-top:5px}
+.back{border:0;background:none;color:var(--muted);padding:9px 0;font-weight:700}
+.lesson-progress{height:6px;background:var(--panel2);border-radius:8px;margin:10px 0 25px;overflow:hidden}
+.lesson-progress div{height:100%;background:var(--green);width:0;transition:width .2s}
+.lesson-illustration{border-radius:20px;background:linear-gradient(145deg,#263c46,#17242d);padding:26px;text-align:center;font-size:68px;margin:18px 0}
+.fact{background:#25372e;border:1px solid #49644a;padding:14px;border-radius:14px;margin:16px 0}
+.fact strong{color:var(--green);font-size:12px;text-transform:uppercase;letter-spacing:1px}
+.fact p{color:#d4e1d6;margin-bottom:0}
+.answer{width:100%;text-align:left;border:1px solid var(--line);background:var(--panel);color:var(--text);padding:14px;border-radius:13px;margin:6px 0;font-weight:650}
+.answer.selected{border-color:var(--green);background:#293b30}
+.answer.correct{border-color:var(--green);background:#263d2d}
+.answer.wrong{border-color:var(--red);background:#432d30}
+.feedback{padding:13px;border-radius:13px;margin-top:12px;background:var(--panel2);line-height:1.5}
+.feedback.good{border:1px solid var(--green)}
+.feedback.bad{border:1px solid var(--orange)}
+.muted{color:var(--muted)}
+.hidden{display:none!important}
+.big-number{font-size:35px;font-weight:850;letter-spacing:-1px}
+.garage-row{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line);gap:12px}
+.garage-row:last-child{border:0}
+.garage-row span{color:var(--muted);text-align:right}
+.achievement{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.achievement:last-child{border:0}
+.achievement-icon{font-size:27px;width:42px;text-align:center}
+input,textarea{width:100%;padding:13px;background:var(--panel2);border:1px solid var(--line);border-radius:12px;color:var(--text);font:inherit;margin:6px 0 12px}
+footer{text-align:center;color:#74858d;font-size:11px;padding:20px}
+@media(min-width:541px){body{padding-top:10px}.app{border-left:1px solid #263740;border-right:1px solid #263740}}
 </style>
 </head>
 <body>
+<div class="app">
 <header>
- <div class="brand">WRENCH<span>LY</span> 🔧</div>
- <p>Understand your car. Find the fault. Fix it with confidence.</p>
+  <div class="brand">wrench<span>ly.</span></div>
+  <div class="header-right">
+    <div class="pill">🔥 <b id="streak">1</b></div>
+    <div class="pill">⭐ <b id="xp">0</b> XP</div>
+  </div>
 </header>
+
 <main id="app"></main>
-<nav>
- <button class="active" data-tab="home"><span>🏠</span>Garage</button>
- <button data-tab="learn"><span>📘</span>Learn</button>
- <button data-tab="maintain"><span>🛠️</span>Maintain</button>
- <button data-tab="fault"><span>🔎</span>Fault finder</button>
- <button data-tab="records"><span>📋</span>Records</button>
+
+<nav class="bottom-nav">
+  <button class="nav-item active" data-tab="learn"><span>📚</span>Learn</button>
+  <button class="nav-item" data-tab="practice"><span>🧠</span>Practice</button>
+  <button class="nav-item" data-tab="garage"><span>🚘</span>My Garage</button>
+  <button class="nav-item" data-tab="profile"><span>🏆</span>Progress</button>
 </nav>
+</div>
+
 <script>
-const KEY="wrenchly_v2";
-const defaults={
- vehicle:"2017 BMW 120d",
- details:"3-door · Manual · Diesel",
- engine:"Exact engine code to be confirmed",
- condition:"No known current faults",
- checks:{},notes:"",records:[]
-};
-let data;
-try{
- data={...defaults,...JSON.parse(localStorage.getItem(KEY)||"{}")};
-}catch(e){data={...defaults};}
+const courses = [
+ {name:"Know your car",desc:"Get to know the machine you're driving.",icon:"🚘",lessons:[
+  {title:"Meet your car",desc:"The main systems and what they do",icon:"🚗",mins:3,
+   text:"A car is made up of connected systems. The engine creates power, the transmission transfers it to the wheels, the brakes slow you down and the suspension helps keep the tyres in contact with the road.",
+   fact:"Think of a car as a team. Each system has a job, and a problem in one area can affect another.",
+   question:"Which system transfers engine power to the wheels?",answers:["Suspension","Transmission","Cooling system"],correct:1,explain:"The transmission transfers power from the engine to the driven wheels."},
+  {title:"Under the bonnet",desc:"Recognise the important components",icon:"🔧",mins:4,
+   text:"Under the bonnet you'll find components such as the engine, battery, coolant reservoir, brake fluid reservoir and air intake. Their positions vary between vehicles, so always use your owner's manual to identify them.",
+   fact:"Never remove a coolant cap when the engine is hot. The system can be pressurised and cause serious burns.",
+   question:"When is it safest to check the coolant level?",answers:["With the engine cold","Immediately after a long drive","While the engine is running"],correct:0,explain:"Check the level when the engine is cold, following the vehicle handbook."},
+  {title:"Your dashboard",desc:"Understand warning lights",icon:"💡",mins:3,
+   text:"Dashboard lights communicate information about your car. Some are reminders, some indicate a fault, and some mean you should stop as soon as it is safe. The exact meaning depends on the vehicle.",
+   fact:"A red oil pressure warning while driving is not a routine service reminder. Stop safely and switch off the engine.",
+   question:"A red oil pressure warning appears while driving. What should you do?",answers:["Ignore it until your next service","Stop safely and switch off the engine","Rev the engine"],correct:1,explain:"Low oil pressure can cause severe engine damage. Stop safely and seek assistance."}
+ ]},
+ {name:"How the engine works",desc:"Understand where the power comes from.",icon:"⚙️",lessons:[
+  {title:"The four-stroke cycle",desc:"How a combustion engine works",icon:"🔄",mins:4,
+   text:"A typical four-stroke petrol engine uses intake, compression, power and exhaust strokes. Diesel engines also use a four-stroke cycle, but ignite fuel through heat created by compressing air.",
+   fact:"The four strokes happen repeatedly in each cylinder while the engine runs.",
+   question:"Which stroke pushes the piston down using combustion?",answers:["Intake","Compression","Power"],correct:2,explain:"The power stroke follows combustion and pushes the piston down."},
+  {title:"Turbochargers",desc:"How a turbo helps an engine breathe",icon:"🌀",mins:4,
+   text:"A turbocharger uses energy from exhaust gases to spin a turbine. This drives a compressor that pushes more air into the engine. More air can allow more fuel to be burned and increase power.",
+   fact:"A turbo system operates at high temperatures and speeds. Do not touch components when hot.",
+   question:"What drives a conventional exhaust turbocharger?",answers:["Exhaust gas energy","The battery alone","The brake system"],correct:0,explain:"Exhaust gas spins the turbine, which drives the compressor."}
+ ]},
+ {name:"Diesel essentials",desc:"Learn the systems fitted to modern diesels.",icon:"💨",lessons:[
+  {title:"DPF explained",desc:"Diesel particulate filters",icon:"🌫️",mins:4,
+   text:"A diesel particulate filter captures soot from the exhaust. During regeneration, the system raises exhaust temperatures to burn off accumulated soot. Driving patterns and vehicle condition affect regeneration.",
+   fact:"A DPF warning can have several causes. Follow the exact handbook instructions and do not attempt a forced regeneration without the correct procedure.",
+   question:"What does a DPF primarily capture?",answers:["Soot particles","Engine coolant","Brake dust"],correct:0,explain:"The diesel particulate filter captures soot from the exhaust."},
+  {title:"EGR system",desc:"Why exhaust gas is recirculated",icon:"♻️",mins:3,
+   text:"Exhaust gas recirculation sends a controlled amount of exhaust gas back into the intake. This reduces combustion temperatures and helps reduce nitrogen oxide emissions.",
+   fact:"EGR faults can cause different symptoms. A warning light alone does not prove the EGR valve is faulty.",
+   question:"What is a key purpose of EGR?",answers:["Increase tyre pressure","Reduce nitrogen oxide emissions","Cool the brakes"],correct:1,explain:"EGR helps lower combustion temperatures and reduce NOx emissions."}
+ ]}
+];
+
+const state = JSON.parse(localStorage.getItem("wrenchly_v3") || "{}");
+state.xp = state.xp || 0;
+state.done = state.done || [];
+state.streak = state.streak || 1;
+state.notes = state.notes || "";
+state.tab = "learn";
+let currentLesson = null;
+let step = 0;
+let selected = null;
+let answered = false;
+
 function save(){
- try{localStorage.setItem(KEY,JSON.stringify(data));}
- catch(e){alert("Unable to save on this device.");}
+ localStorage.setItem("wrenchly_v3",JSON.stringify(state));
+ document.getElementById("xp").textContent=state.xp;
+ document.getElementById("streak").textContent=state.streak;
 }
-const lessons=[
-{title:"Engine bay basics",intro:"Understand the main systems that keep your engine running.",body:"Your engine depends on several systems working together. Lubrication reduces friction, cooling controls temperature, air intake supplies clean air and the fuel system delivers fuel.",points:["Engine oil lubricates moving parts.","Coolant carries heat away from the engine.","The air filter helps prevent dirt entering the engine.","The exhaust system carries and treats exhaust gases."]},
-{title:"Turbocharger",intro:"How your diesel engine produces boost.",body:"A turbocharger uses energy from exhaust gases to drive a compressor. The compressor increases the amount of air entering the engine.",points:["A boost leak can reduce engine performance.","Turbo control faults can affect boost pressure.","A fault code does not automatically mean the turbo is faulty.","Turbochargers and exhaust components become extremely hot."]},
-{title:"Diesel particulate filter",intro:"Understand your DPF warning.",body:"A diesel particulate filter captures soot from the exhaust. Regeneration raises exhaust temperature to burn off accumulated soot.",points:["Repeated short journeys can make regeneration difficult.","Pressure and temperature sensors help monitor the system.","Other engine faults can prevent regeneration.","Do not ignore a DPF warning or repeatedly force regeneration."]},
-{title:"EGR system",intro:"Learn about exhaust gas recirculation.",body:"The EGR system returns a controlled amount of exhaust gas to the intake under certain operating conditions. This helps reduce nitrogen oxide emissions.",points:["EGR faults can be electrical or mechanical.","Airflow faults can have several possible causes.","Coolant loss needs prompt investigation.","Do not remove or disable emissions equipment."]},
-{title:"Clutch and manual gearbox",intro:"Understand the manual transmission.",body:"The clutch connects and disconnects the engine from the gearbox so the driver can select gears.",points:["Engine revs rising without matching acceleration may indicate clutch slip.","Changes in pedal feel may indicate a hydraulic problem.","Difficulty selecting gears can have several causes.","Clutch replacement is generally specialist work."]}
-];
-const tasks=[
-"Check engine oil level using the handbook procedure",
-"Check coolant level when the engine is completely cold",
-"Check tyre pressures against the vehicle label",
-"Inspect tyres for damage and unusual wear",
-"Check exterior lights and indicators",
-"Check windscreen wipers and screenwash",
-"Look for visible fluid leaks beneath the vehicle"
-];
-const symptoms=[
-{title:"Loss of power",desc:"Reduced acceleration, hesitation or limp mode.",questions:["Is an engine warning light showing?","Did the problem begin suddenly?","Does the engine rev normally?"]},
-{title:"Engine won't start",desc:"Engine does not start or struggles to start.",questions:["Do the dashboard lights come on?","Does the starter motor turn the engine?","Is there a warning message?"]},
-{title:"DPF warning",desc:"A diesel particulate filter warning is displayed.",questions:["Is the DPF warning amber or red?","Is there also an engine warning light?","Has the vehicle mainly done short journeys?"]},
-{title:"Coolant loss or overheating",desc:"Temperature rising or coolant level dropping.",questions:["Is the temperature gauge unusually high?","Can you see steam or a leak?","Is there a coolant warning?"]},
-{title:"Clutch or gear problem",desc:"Difficulty selecting gears or clutch slipping.",questions:["Does the clutch pedal feel different?","Do engine revs rise without matching acceleration?","Is selecting first or reverse difficult?"]}
-];
-const app=document.getElementById("app");
-function show(html){app.innerHTML=html;}
-function go(tab){
- document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));
- if(tab==="home")home();
- if(tab==="learn")learn();
- if(tab==="maintain")maintain();
- if(tab==="fault")fault();
- if(tab==="records")records();
-}
-function home(){
- show(`
- <section class="hero">
- <div class="eyebrow">YOUR GARAGE · VEHICLE 001</div>
- <h1>BMW 120d</h1>
- <p>2017 BMW 1 Series · F21 · 3-door</p>
- <span class="badge">● ${data.condition}</span>
- </section>
- <div class="card">
- <div class="row"><h3>Your vehicle</h3><span>🚘</span></div>
- <p class="muted">${data.details}</p>
- <p class="muted">${data.engine}</p>
- <p class="small">Vehicle specifications should be checked against the exact vehicle and production date.</p>
- </div>
- <h2>What would you like to do?</h2>
- <div class="grid">
- <button class="card tile" onclick="go('learn')"><span class="ico">📘</span><b>Learn</b><p class="muted">Understand your BMW</p></button>
- <button class="card tile" onclick="go('maintain')"><span class="ico">🛠️</span><b>Maintenance</b><p class="muted">Everyday checks</p></button>
- <button class="card tile" onclick="go('fault')"><span class="ico">🔎</span><b>Fault finder</b><p class="muted">Guided troubleshooting</p></button>
- <button class="card tile" onclick="go('records')"><span class="ico">📋</span><b>My records</b><p class="muted">Saved notes and sessions</p></button>
- </div>
- <div class="notice">Wrenchly is an educational guide, not a substitute for professional diagnosis or BMW workshop information.</div>
- `);
-}
-function learn(){
- show(`<h2>BMW learning centre</h2><p class="muted">Choose a subject to learn about.</p>
- ${lessons.map((l,i)=>`<button class="card tile" style="width:100%;min-height:0" onclick="lesson(${i})"><b>${l.title}</b><p class="muted">${l.intro}</p></button>`).join("")}`);
-}
-function lesson(i){
- const l=lessons[i];
- show(`<button class="secondary" onclick="go('learn')">← All lessons</button>
- <h2>${l.title}</h2><p>${l.body}</p>
- <div class="card"><h3>Key things to know</h3><ul>${l.points.map(p=>`<li>${p}</li>`).join("")}</ul></div>
- <button class="primary" onclick="go('learn')">Complete lesson ✓</button>`);
-}
-function maintain(){
- show(`<h2>Maintenance checklist</h2>
- <p class="muted">Tick off checks as you complete them. Progress is saved on this device.</p>
- <div class="card">${tasks.map((t,i)=>`<label class="check"><input type="checkbox" ${data.checks[i]?"checked":""} onchange="toggleCheck(${i},this.checked)"><span>${t}</span></label>`).join("")}</div>
- <p class="muted">${tasks.filter((t,i)=>data.checks[i]).length} of ${tasks.length} checks completed</p>
- <div class="notice">Never open the coolant system when hot. If the engine overheats, stop safely and switch off the engine.</div>`);
-}
-function toggleCheck(i,v){data.checks[i]=v;save();}
-function fault(){
- show(`<h2>Guided fault finder</h2>
- <p class="muted">Choose the symptom closest to what you are experiencing.</p>
- ${symptoms.map((s,i)=>`<button class="card tile" style="width:100%;min-height:0" onclick="diagnose(${i})"><b>${s.title}</b><p class="muted">${s.desc}</p></button>`).join("")}
- <div class="notice">This tool helps organise observations. It cannot confirm a diagnosis or identify a failed part.</div>`);
-}
-function diagnose(i){
- const s=symptoms[i];
- show(`<button class="secondary" onclick="go('fault')">← Back</button>
- <h2>${s.title}</h2><p>${s.desc}</p>
- <div class="card"><h3>What are you experiencing?</h3>
- ${s.questions.map((q,j)=>`<label>${j+1}. ${q}<select id="answer${j}"><option value="">Choose an answer</option><option>Yes</option><option>No</option><option>Not sure</option></select></label>`).join("")}
- </div>
- <div class="card"><h3>Recommended next steps</h3>
- <p>Record warning messages and when the symptom occurs. If you have an OBD scanner, record the exact fault codes before clearing anything.</p>
- <p class="muted">A fault code points towards a system or circuit. It does not automatically prove a particular component has failed.</p></div>
- <button class="primary" onclick="saveDiagnosis(${i})">Save answers</button>`);
-}
-function saveDiagnosis(i){
- const answers=[0,1,2].map(j=>document.getElementById("answer"+j).value||"Not answered");
- data.records.unshift({date:new Date().toLocaleDateString("en-GB"),title:symptoms[i].title,answers});
+function allLessons(){return courses.flatMap((c,ci)=>c.lessons.map((l,li)=>({...l,ci,li,id:ci+"-"+li})))}
+function completedCount(){return state.done.length}
+function totalCount(){return allLessons().length}
+function progress(){return Math.round(completedCount()/totalCount()*100)}
+function render(){
  save();
- show(`<h2>Answers saved ✓</h2><p>Your diagnostic notes have been saved on this device.</p><button class="primary" onclick="go('records')">View my records</button>`);
+ document.querySelectorAll(".nav-item").forEach(b=>b.classList.toggle("active",b.dataset.tab===state.tab));
+ const root=document.getElementById("app");
+ if(state.tab==="learn") root.innerHTML=learnPage();
+ if(state.tab==="practice") root.innerHTML=practicePage();
+ if(state.tab==="garage") root.innerHTML=garagePage();
+ if(state.tab==="profile") root.innerHTML=profilePage();
 }
-function records(){
- show(`<h2>My records</h2>
- <div class="card"><h3>Vehicle notes</h3>
- <textarea id="notes" rows="5" placeholder="Add service history, observations or vehicle notes...">${escapeText(data.notes)}</textarea>
- <button class="primary" onclick="saveNotes()">Save notes</button></div>
- <h3>Saved diagnostic sessions</h3>
- ${data.records.length?data.records.map(r=>`<div class="card"><b>${escapeText(r.title)}</b><p class="muted">${escapeText(r.date)}</p><ul>${r.answers.map(a=>`<li>${escapeText(a)}</li>`).join("")}</ul></div>`).join(""):'<p class="muted">No saved diagnostic sessions yet.</p>'}
- <button class="secondary" onclick="exportData()">Export my records</button>`);
+function learnPage(){
+ let first=allLessons().find(l=>!state.done.includes(l.id));
+ let pct=progress();
+ return `
+ <div class="hero">
+  <div class="eyebrow">Your learning journey</div>
+  <h1>Know your car.<br>Own your confidence.</h1>
+  <p>Small lessons. Real understanding. Become a more confident DIY car owner.</p>
+  <div class="hero-bottom">
+   <div style="flex:1"><b>${completedCount()} of ${totalCount()} lessons complete</b><div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div></div>
+   <div style="font-size:28px">🏁</div>
+  </div>
+  <button class="btn full" onclick="${first?`startLesson('${first.id}')`:"showCompletion()"}">${first?"Continue learning":"Course completed 🎉"}</button>
+ </div>
+ <div class="stats">
+  <div class="stat"><strong>${state.xp}</strong><span>Total XP</span></div>
+  <div class="stat"><strong>${completedCount()}</strong><span>Lessons done</span></div>
+  <div class="stat"><strong>${state.streak} 🔥</strong><span>Day streak</span></div>
+ </div>
+ <div class="section-head"><h2>Your learning path</h2><small>${pct}% complete</small></div>
+ ${courses.map((c,ci)=>`
+ <div class="section-head"><div><div class="eyebrow">Level ${ci+1}</div><h3>${c.icon} ${c.name}</h3><small class="muted">${c.desc}</small></div></div>
+ <div class="path">${c.lessons.map((l,li)=>{
+  let id=ci+"-"+li,done=state.done.includes(id);
+  let previous=allLessons().findIndex(x=>x.id===id)-1;
+  let unlocked=previous<0||state.done.includes(allLessons()[previous].id);
+  return `<div class="lesson ${done?"done":""} ${!unlocked?"locked":""} ${!done&&unlocked?"current":""}" ${unlocked?`onclick="startLesson('${id}')"`:""}>
+   <div class="lesson-icon">${done?"✓":l.icon}</div>
+   <div class="lesson-info"><div class="lesson-tag">${done?"Completed":unlocked?"Ready to learn":"Locked"}</div><h3>${l.title}</h3><p>${l.desc} · ${l.mins} min</p></div><div class="arrow">${done?"✓":unlocked?"›":"🔒"}</div>
+  </div>`;
+ }).join("")}</div>`).join("")}
+ <footer>Built for curious drivers. Designed for real-world learning.</footer>`;
 }
-function escapeText(s){
- return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function startLesson(id){
+ let l=allLessons().find(x=>x.id===id);
+ if(!l)return;
+ currentLesson=l;step=0;selected=null;answered=false;
+ showLesson();
+}
+function showLesson(){
+ let root=document.getElementById("app");
+ let l=currentLesson;
+ if(step===0){
+ root.innerHTML=`<div class="lesson-screen">
+ <button class="back" onclick="render()">← Back to learning path</button>
+ <div class="lesson-progress"><div style="width:33%"></div></div>
+ <div class="eyebrow">Lesson · ${l.mins} minutes</div><h1>${l.title}</h1>
+ <div class="lesson-illustration">${l.icon}</div>
+ <h2>Let's get to know it.</h2><p style="font-size:16px;color:var(--text)">${l.text}</p>
+ <div class="fact"><strong>🔎 Wrenchly insight</strong><p>${l.fact}</p></div>
+ <button class="btn full" onclick="step=1;showLesson()">I'm ready · Continue</button></div>`;
+ } else {
+ root.innerHTML=`<div class="lesson-screen">
+ <button class="back" onclick="render()">← Exit lesson</button>
+ <div class="lesson-progress"><div style="width:70%"></div></div>
+ <div class="eyebrow">Quick knowledge check</div><h1>Test what you've learned.</h1>
+ <p>Choose the best answer.</p><div class="card"><h2>${l.question}</h2>
+ ${l.answers.map((a,i)=>`<button class="answer ${selected===i?(answered?(i===l.correct?"correct":"wrong"):"selected"):""}" onclick="chooseAnswer(${i})" ${answered?"disabled":""}>${["A","B","C"][i]}. ${a}</button>`).join("")}
+ ${answered?`<div class="feedback ${selected===l.correct?"good":"bad"}"><b>${selected===l.correct?"Correct! Nice work.":"Not quite — keep learning."}</b><p>${l.explain}</p></div>`:""}
+ </div>
+ ${answered?`<button class="btn full" onclick="finishLesson()">Finish lesson · Earn XP</button>`:`<button class="btn full" onclick="checkAnswer()" ${selected===null?"disabled style='opacity:.4'":""}>Check answer</button>`}
+ </div>`;
+ }
+}
+function chooseAnswer(i){if(answered)return;selected=i;showLesson()}
+function checkAnswer(){if(selected===null)return;answered=true;showLesson()}
+function finishLesson(){
+ let id=currentLesson.id;
+ if(!state.done.includes(id)){state.done.push(id);state.xp+=20;}
+ save();currentLesson=null;state.tab="learn";render();
+}
+function showCompletion(){alert("Fantastic work! You've completed this Wrenchly learning path. More lessons are on the way.");}
+function practicePage(){
+ let pool=allLessons();
+ let l=pool[Math.floor(Math.random()*pool.length)];
+ return `<div class="eyebrow">Daily practice</div><h1>Keep your knowledge sharp.</h1>
+ <p>Quick questions to help the important stuff stick.</p>
+ <div class="card"><div style="font-size:36px">🧠</div><h2>Random knowledge check</h2><p>Pick a question from your Wrenchly lessons and see what you remember.</p>
+ <button class="btn full" onclick="startPractice()">Start a quick challenge</button></div>
+ <div class="section-head"><h2>Your learning stats</h2></div>
+ <div class="stats"><div class="stat"><strong>${state.xp}</strong><span>XP earned</span></div><div class="stat"><strong>${completedCount()}</strong><span>Lessons done</span></div><div class="stat"><strong>${progress()}%</strong><span>Course progress</span></div></div>
+ <div class="card"><h3>💡 Learning tip</h3><p>Try explaining a component in your own words. If you can explain what it does and why it matters, you're building useful understanding.</p></div>`;
+}
+function startPractice(){
+ let pool=allLessons();
+ currentLesson=pool[Math.floor(Math.random()*pool.length)];
+ step=1;selected=null;answered=false;
+ showPracticeQuestion();
+}
+function showPracticeQuestion(){
+ let l=currentLesson;
+ document.getElementById("app").innerHTML=`<button class="back" onclick="render()">← Back to practice</button>
+ <div class="eyebrow">Quick challenge</div><h1>${l.icon} ${l.title}</h1>
+ <div class="card"><h2>${l.question}</h2>
+ ${l.answers.map((a,i)=>`<button class="answer ${selected===i?(answered?(i===l.correct?"correct":"wrong"):"selected"):""}" onclick="selectPractice(${i})" ${answered?"disabled":""}>${a}</button>`).join("")}
+ ${answered?`<div class="feedback ${selected===l.correct?"good":"bad"}">${l.explain}</div>`:""}
+ </div>
+ ${answered?`<button class="btn full" onclick="state.xp+=selected===l.correct?10:0;save();render()">Finish challenge ${selected===l.correct?"+10 XP":""}</button>`:`<button class="btn full" onclick="answerPractice()" ${selected===null?"disabled style='opacity:.4'":""}>Check answer</button>`}`;
+}
+function selectPractice(i){if(answered)return;selected=i;showPracticeQuestion()}
+function answerPractice(){if(selected===null)return;answered=true;showPracticeQuestion()}
+function garagePage(){
+ return `<div class="eyebrow">Your vehicle</div><h1>My Garage</h1>
+ <p>Your car is the starting point for your Wrenchly learning journey.</p>
+ <div class="card">
+  <div class="car-visual">🚘</div>
+  <div class="car-title"><div><div class="eyebrow">Your first vehicle</div><h2>BMW 120d</h2></div><span class="tag">F21 · 3-door</span></div>
+  <p>2017 · Manual · Diesel</p>
+  <div class="garage-row"><b>Vehicle status</b><span>Healthy baseline · No known faults</span></div>
+  <div class="garage-row"><b>Engine code</b><span>Not yet confirmed</span></div>
+  <div class="garage-row"><b>Learning profile</b><span>DIY owner</span></div>
+ </div>
+ <div class="card"><h3>🔍 Vehicle-specific learning</h3><p>Wrenchly will use your vehicle profile to organise relevant learning. Exact engine details, equipment and repair specifications must be verified against reliable vehicle information before being treated as fact.</p></div>
+ <div class="card"><h3>📝 My car notes</h3><p>Keep notes about maintenance, questions or things you want to check.</p>
+ <textarea id="notes" rows="4" placeholder="Add a note about your car...">${escapeHtml(state.notes)}</textarea>
+ <button class="btn full" onclick="saveNotes()">Save my notes</button></div>
+ <div class="card"><h3>Coming later</h3><p>Service history · Maintenance planner · Fault code learning · Vehicle-specific repair guides</p></div>`;
 }
 function saveNotes(){
- data.notes=document.getElementById("notes").value;
- save();alert("Your notes have been saved.");
+ state.notes=document.getElementById("notes").value;save();
+ alert("Your note has been saved on this device.");
 }
-function exportData(){
- const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
- const url=URL.createObjectURL(blob);
- const a=document.createElement("a");
- a.href=url;a.download="wrenchly-records.json";a.click();
- URL.revokeObjectURL(url);
+function profilePage(){
+ let badges=[
+ ["🌱","First steps","Complete your first lesson",completedCount()>=1],
+ ["🔧","Getting hands-on","Complete 3 lessons",completedCount()>=3],
+ ["⚙️","System thinker","Complete 5 lessons",completedCount()>=5],
+ ["🏁","Knowledge driver","Complete every current lesson",completedCount()===totalCount()]
+ ];
+ return `<div class="eyebrow">Your Wrenchly journey</div><h1>Your progress.</h1>
+ <div class="hero"><div class="eyebrow">Your current score</div><div class="big-number">${state.xp} XP</div><p>Every lesson builds your understanding. Keep going.</p><div class="progress-track"><div class="progress-fill" style="width:${progress()}%"></div></div><p>${completedCount()} of ${totalCount()} lessons completed</p></div>
+ <div class="section-head"><h2>Achievements</h2><small>${badges.filter(b=>b[3]).length}/${badges.length} unlocked</small></div>
+ <div class="card">${badges.map(b=>`<div class="achievement"><div class="achievement-icon">${b[0]}</div><div style="flex:1"><b>${b[1]}</b><p style="font-size:12px;margin:3px 0">${b[2]}</p></div><span>${b[3]?"🏆":"🔒"}</span></div>`).join("")}</div>
+ <div class="card"><h3>🔥 Your streak</h3><div class="big-number">${state.streak} day${state.streak===1?"":"s"}</div><p>Come back regularly to build your learning habit.</p></div>
+ <div class="card"><h3>About Wrenchly</h3><p>Wrenchly makes car knowledge easier to learn, one small lesson at a time. It is an educational tool, not a substitute for a vehicle handbook, professional diagnosis or verified repair procedures.</p></div>
+ <button class="btn secondary full" onclick="resetProgress()">Reset learning progress</button>`;
 }
-document.querySelectorAll("nav button").forEach(b=>b.addEventListener("click",()=>go(b.dataset.tab)));
-home();
+function resetProgress(){
+ if(confirm("Reset your XP, completed lessons and achievements? Your car notes will be kept.")){
+ state.xp=0;state.done=[];save();render();
+ }
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+document.querySelectorAll(".nav-item").forEach(b=>b.addEventListener("click",()=>{
+ state.tab=b.dataset.tab;render();
+}));
+render();
 </script>
-<footer style="text-align:center;color:#aab8ca;font-size:11px;padding:20px">Wrenchly · Learn. Maintain. Diagnose.</footer>
 </body>
 </html>
